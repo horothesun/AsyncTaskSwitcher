@@ -5,14 +5,7 @@ public final class AsyncTaskSwitcherDefault<TaskOutput> {
 
     private lazy var taskQueue = DispatchQueue(label: "taskQueueId-\(UUID())", attributes: .concurrent)
 
-    private var startTimeByTaskId = ConcurrentDictionaryLock<UUID, Date>(
-        from: [:],
-        onSetValueForKey: { uuid, date in
-            guard let date = date else { return }
-
-            print(taskId: uuid, startTime: date)
-        }
-    )
+    private var startTimeByTaskId = ConcurrentDictionaryLock<UUID, Date>(from: [:])
 
     private lazy var lastCompletedTaskQueue = DispatchQueue(
         label: "timestampQueueId-\(UUID())",
@@ -22,10 +15,7 @@ public final class AsyncTaskSwitcherDefault<TaskOutput> {
 
     private func set(lastCompletedTaskId taskId: UUID) {
         lastCompletedTaskQueue.async(flags: .barrier) { [weak self] in
-            guard let nonNilSelf = self else { return }
-
-            nonNilSelf.lastCompletedTaskId = taskId
-            AsyncTaskSwitcherDefault.print(taskId: taskId, endTime: .init())
+            self?.lastCompletedTaskId = taskId
         }
     }
 
@@ -86,23 +76,6 @@ extension AsyncTaskSwitcherDefault: AsyncTaskSwitcher {
     ) {
         if !areThereCompletedTasksIds(startedAfter: startTime) {
             completion(taskResult)
-        }
-    }
-}
-
-extension AsyncTaskSwitcherDefault {
-
-    private static func print(taskId: UUID, startTime: Date) {
-        DispatchQueue.main.async {
-            let startTimeMsSince1970 = 1000 * startTime.timeIntervalSince1970
-            Swift.print("🔫 Task #\(taskId) started on \(startTime) (\(startTimeMsSince1970))")
-        }
-    }
-
-    private static func print(taskId: UUID, endTime: Date) {
-        DispatchQueue.main.async {
-            let endTimeMsSince1970 = 1000 * endTime.timeIntervalSince1970
-            Swift.print("🛑 Task #\(taskId) ended on \(endTime) (\(endTimeMsSince1970))")
         }
     }
 }
