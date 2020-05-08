@@ -4,12 +4,6 @@ import PackageDescription
 
 let package = Package(
     name: "AsyncTaskSwitcher",
-    platforms: [
-        .macOS(.v10_14),
-        .iOS(.v12),
-        .watchOS(.v5),
-        .tvOS(.v12)
-    ],
     products: [
         .library(
             name: "AsyncTaskSwitcher",
@@ -17,7 +11,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/horothesun/ConcurrentDictionary", from: "0.1.0"),
+        .package(url: "https://github.com/horothesun/ConcurrentDictionary", .exact("0.1.1"))
     ],
     targets: [
         .target(
