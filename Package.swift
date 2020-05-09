@@ -8,10 +8,13 @@ let package = Package(
         .library(
             name: "AsyncTaskSwitcher",
             targets: ["AsyncTaskSwitcher"]
-        ),
+        )
     ],
     dependencies: [
-        .package(url: "https://github.com/horothesun/ConcurrentDictionary", .exact("0.1.1"))
+        .package(
+            url: "https://github.com/horothesun/ConcurrentDictionary",
+            .upToNextMinor(from: "0.1.0")
+        )
     ],
     targets: [
         .target(
@@ -21,6 +24,6 @@ let package = Package(
         .testTarget(
             name: "AsyncTaskSwitcherTests",
             dependencies: ["AsyncTaskSwitcher"]
-        ),
+        )
     ]
 )
