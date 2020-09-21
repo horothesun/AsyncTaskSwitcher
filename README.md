@@ -1,5 +1,8 @@
 # AsyncTaskSwitcher
 
+![CI Linux](https://github.com/horothesun/AsyncTaskSwitcher/workflows/CI%20Linux/badge.svg)
+![CI macOS](https://github.com/horothesun/AsyncTaskSwitcher/workflows/CI%20macOS/badge.svg)
+
 ## Generate Xcode project
 
 ```bash
