@@ -2,6 +2,9 @@
 
 ![CI Linux](https://github.com/horothesun/AsyncTaskSwitcher/workflows/CI%20Linux/badge.svg)
 ![CI macOS](https://github.com/horothesun/AsyncTaskSwitcher/workflows/CI%20macOS/badge.svg)
+[![SwiftPM](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
+
+Swift asynchronous task switcher: it calls the completion handler of the most-recently-completed async task.
 
 ## Generate Xcode project
 
