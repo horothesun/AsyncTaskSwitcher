@@ -30,7 +30,8 @@ jobs:
       run: swift test --enable-code-coverage -v
     - name: Generate Codecov
       run: |
-        llvm-cov export -format="lcov" .build/x86_64-unknown-linux-gnu/debug/AsyncTaskSwitcherPackageTests.xctest \
+        /usr/lib/llvm-9/bin/llvm-cov export \
+          -format="lcov" .build/x86_64-unknown-linux-gnu/debug/AsyncTaskSwitcherPackageTests.xctest \
           -instr-profile=.build/x86_64-unknown-linux-gnu/debug/codecov/default.profdata > info.lcov
     - name: Print Codecov
       run: cat info.lcov
