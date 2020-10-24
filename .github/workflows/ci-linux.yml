@@ -18,8 +18,9 @@ jobs:
       with:
         access_token: ${{ github.token }}
 
-    - name: Find llvm-cov
-      run: find / -iname llvm-cov
+    # - name: Find llvm-cov
+    #   run: find / -iname llvm-cov
+
     # - name: Intall llvm-cov
     #   run: sudo apt-get install llvm-10
 
