@@ -19,7 +19,7 @@ jobs:
         access_token: ${{ github.token }}
 
     - name: Intall llvm-cov
-      run: sudo apt-get install llvm-9
+      run: sudo apt-get install llvm-10
 
     - uses: actions/checkout@v2
     - name: Build
