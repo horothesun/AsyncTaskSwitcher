@@ -13,7 +13,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/horothesun/ConcurrentDictionary",
-            .upToNextMinor(from: "0.1.0")
+            .upToNextMinor(from: "0.1.1")
         )
     ],
     targets: [
