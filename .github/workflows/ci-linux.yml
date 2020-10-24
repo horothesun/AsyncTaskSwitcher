@@ -18,8 +18,10 @@ jobs:
       with:
         access_token: ${{ github.token }}
 
-    - name: Intall llvm-cov
-      run: sudo apt-get install llvm-10
+    - name: Find llvm-cov
+      run: find / -iname llvm-cov
+    # - name: Intall llvm-cov
+    #   run: sudo apt-get install llvm-10
 
     - uses: actions/checkout@v2
     - name: Build
@@ -32,5 +34,7 @@ jobs:
           -instr-profile=.build/x86_64-unknown-linux-gnu/debug/codecov/default.profdata > info.lcov
     - name: Print Codecov
       run: cat info.lcov
-    # - name: Upload Codecov
+    # - name: Upload to codecov.io
     #   run: bash <(curl -s https://codecov.io/bash) -f info.lcov
+    #   env:
+    #     CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
